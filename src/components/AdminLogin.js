@@ -32,12 +32,11 @@ const AdminLogin = () => {
           />
         </div>
 
-        <button
-          // className="                                                "
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold p-2 w-full rounded-md focus:outline-none focus:shadow-outline"
-        >
-          Login
-        </button>
+        <Link to="/login/adminlogin/adminfunctionality">
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold p-2 w-full rounded-md focus:outline-none focus:shadow-outline">
+            Login
+          </button>
+        </Link>
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ const StudentSignUp = () => {
     email: "",
     enrollment: "",
     roll: "",
+    classroll:"",
     branch: "",
     semester: "",
     password: "",
@@ -59,6 +60,7 @@ const StudentSignUp = () => {
       email: "",
       enrollment: "",
       roll: "",
+      classroll:"",
       branch: "",
       semester: "",
       password: "",
@@ -150,22 +152,23 @@ const StudentSignUp = () => {
                   required
                 />
               </div>
-
+              
+              {/* class roll number */}
               <div className="mb-4 flex items-center">
                 <label
-                  htmlFor="roll"
+                  htmlFor="classroll"
                   className="block px-2 text-gray-700 text-sm font-bold mb-2"
                 >
                   Class Roll:
                 </label>
                 <input
                   type="text"
-                  id="roll"
-                  name="roll"
-                  value={formData.roll}
+                  id="classroll"
+                  name="classroll"
+                  value={formData.classroll}
                   onChange={handleInputChange}
                   className="shadow appearance-none border rounded w-80 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  placeholder="Enter your class number"
+                  placeholder="Enter your class roll number"
                   required
                 />
               </div>
@@ -228,26 +231,6 @@ const StudentSignUp = () => {
                   onChange={handleInputChange}
                   className="shadow appearance-none border rounded w-80 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   placeholder="Enter the password"
-                  required
-                />
-              </div>
-
-              {/* admin */}
-              <div className="mb-4 flex items-center ">
-                <label
-                  htmlFor="password"
-                  className="block px-2 text-gray-700 text-sm font-bold mb-2"
-                >
-                  Enter code
-                </label>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleInputChange}
-                  className="shadow appearance-none border rounded w-80 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  placeholder="Registration code for admin"
                   required
                 />
               </div>

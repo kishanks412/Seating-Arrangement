@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Link, Outlet, Routes } from "react-router-dom";
-import { Route } from "react-router-dom";
+import { Link, Outlet, Routes, Route } from "react-router-dom";
 import AdminLogin from "./AdminLogin";
 import StudentLogin from "./StudentLogin";
 

@@ -7,7 +7,6 @@ const StudentLogin = () => {
   const [password, setPassword] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
 
-
   const handleLogin = async () => {
     // Simulate user authentication logic (replace with actual backend API call).
     // In a real application, you would send a POST request to your server.
@@ -64,22 +63,15 @@ const StudentLogin = () => {
           />
         </div>
 
-        <button
-          // className="                                                "
-          className ="bg-blue-500 hover:bg-blue-700 text-white font-bold p-2 w-full rounded-md focus:outline-none focus:shadow-outline"
-          onClick={handleLogin}
-        >
-          Login
-        </button>
-
-        
-
-        {loggedIn && (
-          <Link to="/hi">
-            <StudentPage/>
-          </Link>
-          
-        )}
+        <Link to="/login/studentlogin/student">
+          <button
+            // className="                                                "
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold p-2 w-full rounded-md focus:outline-none focus:shadow-outline"
+            onClick={handleLogin}
+          >
+            Login
+          </button>
+        </Link>
       </div>
     </div>
   );

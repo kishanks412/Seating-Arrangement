@@ -2,13 +2,12 @@ import React from "react";
 import { useState } from "react";
 
 const AdminSignUp = () => {
+  const [code, setCode] = useState("");
+
   const initialFormData = {
     name: "",
     email: "",
-    enrollment: "",
-    roll: "",
     branch: "",
-    semester: "",
     password: "",
   };
   const [formData, setFormData] = useState(initialFormData);
@@ -30,24 +29,25 @@ const AdminSignUp = () => {
 
     // You can perform actions with the submitted data here
     // For example, you can send it to an API or store it in state
-    console.log(formData
-      
-      );
-    try {
-      const response = await fetch("YOUR_API_ENDPOINT", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
 
-      if (response.ok) {
-        // Successful registration, you can redirect or show a success message
-        console.log("Registration successful!");
-      } else {
-        // Handle errors, such as invalid input or server issues
-        console.error("Registration failed.");
+    try {
+      if (!(code == "1234")) alert("enter correct code");
+      else {
+        const response = await fetch("YOUR_API_ENDPOINT", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+
+        if (response.ok) {
+          // Successful registration, you can redirect or show a success message
+          console.log("Registration successful!");
+        } else {
+          // Handle errors, such as invalid input or server issues
+          console.error("Registration failed.");
+        }
       }
     } catch (error) {
       console.error("Error:", error);
@@ -57,10 +57,7 @@ const AdminSignUp = () => {
     setFormData({
       name: "",
       email: "",
-      enrollment: "",
-      roll: "",
       branch: "",
-      semester: "",
       password: "",
     });
   };
@@ -70,17 +67,17 @@ const AdminSignUp = () => {
       <div className="flex-grow flex items-center justify-center bg-gray-100">
         <div className="bg-white my-10 p-5 shadow-md rounded-lg">
           <div className=" m-10 text-4xl font-semibold ">
-            <h2>Registeration of Students</h2>
+            <h2>Registeration of Admins</h2>
           </div>
           <div>
             <div>
-              {/* student name */}
+              {/* Admin name */}
               <div className="mb-4 flex items-center">
                 <label
                   htmlFor="name"
                   className="block px-2 text-gray-700 text-sm font-bold mb-2"
                 >
-                  Student Name:
+                  Admin Name:
                 </label>
                 <input
                   type="text"
@@ -93,13 +90,13 @@ const AdminSignUp = () => {
                   required
                 />
               </div>
-              {/* student email */}
+              {/* admin email */}
               <div className="mb-4 flex items-center">
                 <label
                   htmlFor="email"
                   className="block px-2 text-gray-700 text-sm font-bold mb-2 "
                 >
-                  Student Email:
+                  Admin Email:
                 </label>
                 <input
                   type="email"
@@ -109,63 +106,6 @@ const AdminSignUp = () => {
                   onChange={handleInputChange}
                   className="shadow appearance-none border rounded w-80 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   placeholder="Enter your email"
-                  required
-                />
-              </div>
-              {/* student enrollment */}
-              <div className="mb-4 flex items-center">
-                <label
-                  htmlFor="enrollment"
-                  className="block px-2 text-gray-700 text-sm font-bold mb-2"
-                >
-                  Enrollment Number:
-                </label>
-                <input
-                  type="text"
-                  id="enrollment"
-                  name="enrollment"
-                  value={formData.enrollment}
-                  onChange={handleInputChange}
-                  className="shadow appearance-none border rounded w-80 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  placeholder="Enter your enrollment number"
-                  required
-                />
-              </div>
-              {/* roll number */}
-              <div className="mb-4 flex items-center">
-                <label
-                  htmlFor="roll"
-                  className="block px-2 text-gray-700 text-sm font-bold mb-2"
-                >
-                  Roll Number:
-                </label>
-                <input
-                  type="text"
-                  id="roll"
-                  name="roll"
-                  value={formData.roll}
-                  onChange={handleInputChange}
-                  className="shadow appearance-none border rounded w-80 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  placeholder="Enter your roll number"
-                  required
-                />
-              </div>
-
-              <div className="mb-4 flex items-center">
-                <label
-                  htmlFor="roll"
-                  className="block px-2 text-gray-700 text-sm font-bold mb-2"
-                >
-                  Class Roll:
-                </label>
-                <input
-                  type="text"
-                  id="roll"
-                  name="roll"
-                  value={formData.roll}
-                  onChange={handleInputChange}
-                  className="shadow appearance-none border rounded w-80 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  placeholder="Enter your class number"
                   required
                 />
               </div>
@@ -190,28 +130,6 @@ const AdminSignUp = () => {
                 />
               </div>
 
-              {/* semester */}
-              <div className="mb-4 flex items-center">
-                <label
-                  htmlFor="semester"
-                  className="block px-2 text-gray-700 text-sm font-bold mb-2"
-                >
-                  Semester
-                </label>
-                <input
-                  type="number"
-                  id="semester"
-                  name="semester"
-                  value={formData.semester}
-                  onChange={handleInputChange}
-                  className="shadow appearance-none border rounded w-80 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  placeholder="Enter your semester(number)"
-                  min="1"
-                  max="10"
-                  required
-                />
-              </div>
-
               {/* password */}
               <div className="mb-4 flex items-center ">
                 <label
@@ -232,20 +150,20 @@ const AdminSignUp = () => {
                 />
               </div>
 
-              {/* admin */}
+              {/* admin code */}
               <div className="mb-4 flex items-center ">
                 <label
-                  htmlFor="password"
+                  htmlFor="code"
                   className="block px-2 text-gray-700 text-sm font-bold mb-2"
                 >
                   Enter code
                 </label>
                 <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleInputChange}
+                  type="text"
+                  id="code"
+                  name="code"
+                  value={code}
+                  onChange={(event) => setCode(event.target.value)}
                   className="shadow appearance-none border rounded w-80 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   placeholder="Registration code for admin"
                   required
@@ -260,8 +178,6 @@ const AdminSignUp = () => {
                 >
                   Register
                 </button>
-
-                
 
                 <button
                   type="reset"
@@ -280,6 +196,3 @@ const AdminSignUp = () => {
 };
 
 export default AdminSignUp;
-
-
-

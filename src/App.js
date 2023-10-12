@@ -16,6 +16,15 @@ import StudentData from "./components/StudentData";
 import AdminFucntion from "./components/AdminFucntion";
 import ByClass from "./components/ByClass";
 import ByBranchSem from "./components/ByBranchSem";
+import SetArrangement from "./components/SetArrangement";
+import AddClass from "./components/AddClass";
+import DelClass from "./components/DelClass";
+import GetAllClass from "./components/GetAllClass";
+import AddExam from "./components/AddExam";
+import DelExam from "./components/DelExam";
+import GetAllExam from "./components/GetAllExam";
+import GetAllStudent from "./components/GetAllStudent";
+import GetAllStudentsBySem from "./components/GetAllStudentsBySem";
 
 
 const AppLayout = () =>{
@@ -57,6 +66,46 @@ const appRouter = createBrowserRouter([
           {
             path:"bybranchsem",
             element: <ByBranchSem/>
+          },
+          {
+            path:"setarrangement",
+            element: <SetArrangement/>
+          },
+          {
+            path:"addclass",
+            element: <AddClass/>
+          },
+          {
+            path:"delclass",
+            element: <DelClass/>
+          },
+          {
+            path:"getallclass",
+            element: <GetAllClass/>
+          },
+          {
+            path:"addexam",
+            element: <AddExam/>
+          },
+          {
+            path:"delexam",
+            element: <DelExam/>
+          },
+          {
+            path:"getallexam",
+            element: <GetAllExam/>
+          },
+          {
+            path:"addexam",
+            element: <AddExam/>
+          },
+          {
+            path:"getallstudents",
+            element: <GetAllStudent/>
+          },
+          {
+            path:"getallstudentsbysem",
+            element: <GetAllStudentsBySem/>
           },
         ]
       },

@@ -8,8 +8,6 @@ const StudentLogin = () => {
   const [loggedIn, setLoggedIn] = useState(false);
 
   const handleLogin = async () => {
-    // Simulate user authentication logic (replace with actual backend API call).
-    // In a real application, you would send a POST request to your server.
     try {
       // Replace this with your actual authentication logic
       const response = await fetch("/api/login", {

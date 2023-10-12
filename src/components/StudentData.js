@@ -7,27 +7,6 @@ const StudentData = () => {
   return (
     <div className="flex-grow m-5">
       <div>
-        {/* student name */}
-        <div className="mb-4 flex items-center">
-          <label
-            htmlFor="name"
-            className="block px-2 text-gray-700 text-sm font-bold mb-2"
-          >
-            Student Name:
-          </label>
-          <h2 className=""> Harsh Raj Jha</h2>
-        </div>
-        {/* student email */}
-        <div className="mb-4 flex items-center">
-          <label
-            htmlFor="email"
-            className="block px-2 text-gray-700 text-sm font-bold mb-2 "
-          >
-            Student Email:
-          </label>
-          <h2 className=""> Harsh Raj Jha</h2>
-        </div>
-
         {/* student enrollment */}
         <div className="mb-4 flex items-center">
           <label

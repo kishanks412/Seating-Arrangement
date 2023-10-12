@@ -21,18 +21,24 @@ const AdminSignUp = () => {
   };
 
   const handleFormReset = () => {
+    setCode("");
     setFormData(initialFormData);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // You can perform actions with the submitted data here
-    // For example, you can send it to an API or store it in state
-
-    try {
-      if (!(code == "1234")) alert("enter correct code");
-      else {
+    if (code !== "1234") {
+      alert("enter correct code");
+    } else if (
+      formData.name === "" ||
+      formData.email === "" ||
+      formData.branch === "" ||
+      formData.password === ""
+    ) {
+      alert("Please fill out all fields.");
+    } else {
+      try {
         const response = await fetch("YOUR_API_ENDPOINT", {
           method: "POST",
           headers: {
@@ -42,24 +48,16 @@ const AdminSignUp = () => {
         });
 
         if (response.ok) {
-          // Successful registration, you can redirect or show a success message
-          console.log("Registration successful!");
+          alert("Registration successful!");
+          handleFormReset();
         } else {
-          // Handle errors, such as invalid input or server issues
-          console.error("Registration failed.");
+          alert("Registration failed.");
         }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Error occurred while registering.");
       }
-    } catch (error) {
-      console.error("Error:", error);
     }
-
-    // Clear the input fields after submission
-    setFormData({
-      name: "",
-      email: "",
-      branch: "",
-      password: "",
-    });
   };
 
   return (

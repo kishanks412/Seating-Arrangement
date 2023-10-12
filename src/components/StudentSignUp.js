@@ -7,11 +7,12 @@ const StudentSignUp = () => {
     email: "",
     enrollment: "",
     roll: "",
-    classroll:"",
+    classroll: "",
     branch: "",
     semester: "",
     password: "",
   };
+
   const [formData, setFormData] = useState(initialFormData);
 
   const handleInputChange = (event) => {
@@ -29,42 +30,43 @@ const StudentSignUp = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // You can perform actions with the submitted data here
-    // For example, you can send it to an API or store it in state
-    console.log(formData
-      
-      );
-    try {
-      const response = await fetch("YOUR_API_ENDPOINT", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+    console.log(formData);
 
-      if (response.ok) {
-        // Successful registration, you can redirect or show a success message
-        console.log("Registration successful!");
-      } else {
-        // Handle errors, such as invalid input or server issues
-        console.error("Registration failed.");
+    if (
+      formData.name === "" ||
+      formData.email === "" ||
+      formData.branch === "" ||
+      formData.password === "" ||
+      formData.enrollment === "" ||
+      formData.roll === "" ||
+      formData.classroll === "" ||
+      formData.semester === ""
+    ) {
+      alert("Please fill out all fields.");
+    } else {
+      try {
+        const response = await fetch("YOUR_API_ENDPOINT", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+
+        if (response.ok) {
+          alert("Registration successful!");
+          handleFormReset();
+        } else {
+          alert("Registration failed.");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Error occurred while registering.");
       }
-    } catch (error) {
-      console.error("Error:", error);
     }
 
     // Clear the input fields after submission
-    setFormData({
-      name: "",
-      email: "",
-      enrollment: "",
-      roll: "",
-      classroll:"",
-      branch: "",
-      semester: "",
-      password: "",
-    });
+    // setFormData(initialFormData);
   };
 
   return (
@@ -152,7 +154,7 @@ const StudentSignUp = () => {
                   required
                 />
               </div>
-              
+
               {/* class roll number */}
               <div className="mb-4 flex items-center">
                 <label
@@ -244,8 +246,6 @@ const StudentSignUp = () => {
                   Register
                 </button>
 
-                
-
                 <button
                   type="reset"
                   onClick={handleFormReset}
@@ -263,6 +263,3 @@ const StudentSignUp = () => {
 };
 
 export default StudentSignUp;
-
-
-

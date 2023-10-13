@@ -4,6 +4,19 @@ import { useState } from "react";
 const StudentData = () => {
     
     const [enroll, setEnroll] = useState("");
+    const [details, setDetails] = useState(null);
+
+    async function getDetails(){
+      try {
+          const response = await fetch('http://localhost:8080/getAllClassRooms');
+          const jsonData = await response.json();
+          setDetails(jsonData);
+        } catch (error) {
+          console.error('Error:', error);
+        }
+    }
+
+
   return (
     <div className="flex-grow m-5">
       <div>
@@ -30,12 +43,33 @@ const StudentData = () => {
         <div className="my-10">
           <button
             type="submit"
+            onClick={getDetails}
+
             className="mx-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-10 rounded focus:outline-none focus:shadow-outline"
           >
-            Find Seat
+            Find Details
           </button>
         </div>
+
+        
       </div>
+
+      {details === null ? (
+          <div className="">Loading...</div>
+        ) : details.length === 0 ? (
+          <div>No data available.</div>
+        ) : (
+          <div>
+            <h2>Name     :- {details.name} </h2>
+            <p>Enroll    :- {details.enroll} </p>
+            <p>Semester  :- {details.sem} </p>
+            <p>Branch    :- {details.branch} </p>
+            <p>Exam      :- {details.exam} </p>
+            <p>Classroom :- {details.classroom} </p>
+            <p>Bench     :- {details.bench}</p>
+
+            </div>
+        )}
     </div>
   );
 };

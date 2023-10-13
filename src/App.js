@@ -25,6 +25,7 @@ import DelExam from "./components/DelExam";
 import GetAllExam from "./components/GetAllExam";
 import GetAllStudent from "./components/GetAllStudent";
 import GetAllStudentsBySem from "./components/GetAllStudentsBySem";
+import GetArrange from "./components/GetArrange";
 
 
 const AppLayout = () =>{
@@ -70,6 +71,10 @@ const appRouter = createBrowserRouter([
           {
             path:"setarrangement",
             element: <SetArrangement/>
+          },
+          {
+            path:"getarrangement",
+            element: <GetArrange />
           },
           {
             path:"addclass",

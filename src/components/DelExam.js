@@ -13,7 +13,7 @@ const DelExam = () => {
 
   const handleDelExam = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/delClassRoom/${examid}`, {
+      const response = await fetch(`http://localhost:8080/delExam/${examid}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'

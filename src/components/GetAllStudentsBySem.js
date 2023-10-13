@@ -9,24 +9,19 @@ const GetAllStudentsBySem = () => {
     setSem(event.target.value);
   };
 
-  useEffect(() => {
-    // Define a function to fetch students based on the sem value
-    const fetchStudents = async () => {
-      try {
-        const response = await fetch(
-          `http://localhost:8080/getAllStudents/${sem}`
-        );
-        const data = await response.json();
-        setStudents(data); // Update the students state variable with the fetched data
-      } catch (error) {
-        console.error("Error:", error);
-        setStudents([]);
-      }
-    };
-    // Call the fetchStudents function when the component mounts or when the sem value changes
-    fetchStudents();
-  }, [sem]); // The effect will re-run whenever the sem value changes
-
+  const handleFindStudents = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:8080/getAllStudents/${sem}`
+      );
+      const data = await response.json();
+      setStudents(data);
+    } catch (error) {
+      console.error("Error:", error);
+      setStudents([]);
+    }
+  };
+ 
   return (
     <>
       {/* semester */}
@@ -50,7 +45,20 @@ const GetAllStudentsBySem = () => {
           required
         />
       </div>
+      
+      
+
+
       <div>
+      <div className="my-10">
+          <button
+            type="submit"
+            onClick={handleFindStudents}
+            className="mx-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-10 rounded focus:outline-none focus:shadow-outline"
+          >
+            Find Students
+          </button>
+        </div>
         {students === null ? (
           <div className="">Loading...</div>
         ) : students.length === 0 ? (

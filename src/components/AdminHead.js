@@ -6,7 +6,7 @@ const AdminHead = () => {
     <div className="flex-grow">
       <div className="p-4 bg-red-400">
         <ul className="nav-items flex flex-wrap">
-          <li className="px-2 pb-3   hover:text-2xl">
+          {/* <li className="px-2 pb-3   hover:text-2xl">
             <Link to="/login/adminlogin/adminfunctionality/byclass">
               By Classroom
             </Link>
@@ -15,10 +15,15 @@ const AdminHead = () => {
             <Link to="/login/adminlogin/adminfunctionality/bybranchsem">
               By Branch & Sem
             </Link>
-          </li>
+          </li> */}
           <li className="px-2 pb-3 hover:text-2xl">
             <Link to="/login/adminlogin/adminfunctionality/setarrangement">
               Set Arrangement
+            </Link>
+          </li>
+          <li className="px-2 pb-3 hover:text-2xl">
+            <Link to="/login/adminlogin/adminfunctionality/getarrangement">
+              Get Arrangement
             </Link>
           </li>
           <li className="px-2 pb-3 hover:text-2xl">

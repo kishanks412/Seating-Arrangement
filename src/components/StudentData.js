@@ -6,9 +6,13 @@ const StudentData = () => {
     const [enroll, setEnroll] = useState("");
     const [details, setDetails] = useState(null);
 
+    const handleInputChange = (event) => {
+      setEnroll(event.target.value)
+    };
+
     async function getDetails(){
       try {
-          const response = await fetch('http://localhost:8080/getAllClassRooms');
+          const response = await fetch(`http://localhost:8080/getSeating/${enroll}`);
           const jsonData = await response.json();
           setDetails(jsonData);
         } catch (error) {
@@ -33,7 +37,7 @@ const StudentData = () => {
             id="enrollment"
             name="enrollment"
             value={enroll}
-            // onChange={handleInputChange}
+            onChange={handleInputChange}
             className="shadow appearance-none border rounded w-80 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter your enrollment number"
             required
